@@ -93,6 +93,13 @@ lib/
 
 ---
 
+## 📱 شاشات التطبيق (Screenshots)
+
+| شاشة الإدخال (Input Screen) | شاشة النتيجة (Result Screen) |
+| :---: | :---: |
+| <img src="assets/screenshots/input_screen.png" width="300" alt="Input Screen" /> | <img src="assets/screenshots/result_screen.png" width="300" alt="Result Screen" /> |
+
+
 ## 🚀 كيفية تشغيل المشروع (How to Run)
 
 1. تأكد من تثبيت بيئة Flutter.
