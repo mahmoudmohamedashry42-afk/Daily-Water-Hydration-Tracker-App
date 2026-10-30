@@ -43,6 +43,7 @@ class ResultScreen extends StatelessWidget {
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: kPrimaryTextColor),
+          tooltip: 'Back',
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -213,27 +214,36 @@ class ResultScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              _SummaryItem(
-                                label: 'Gender',
-                                value: genderLabel,
-                                icon: gender == Gender.female
-                                    ? Icons.female
-                                    : Icons.male,
+                              Expanded(
+                                child: _SummaryItem(
+                                  label: 'Gender',
+                                  value: genderLabel,
+                                  icon: gender == Gender.female
+                                      ? Icons.female
+                                      : Icons.male,
+                                ),
                               ),
-                              _SummaryItem(
-                                label: 'Weight',
-                                value: '$weight kg',
-                                icon: Icons.fitness_center,
+                              Expanded(
+                                child: _SummaryItem(
+                                  label: 'Weight',
+                                  value: '$weight kg',
+                                  icon: Icons.fitness_center,
+                                ),
                               ),
-                              _SummaryItem(
-                                label: 'Age',
-                                value: '$age yrs',
-                                icon: Icons.cake_outlined,
+                              Expanded(
+                                child: _SummaryItem(
+                                  label: 'Age',
+                                  value: '$age yrs',
+                                  icon: Icons.cake_outlined,
+                                ),
                               ),
-                              _SummaryItem(
-                                label: 'Activity',
-                                value: '${activityHours.toStringAsFixed(1)} h',
-                                icon: Icons.directions_run,
+                              Expanded(
+                                child: _SummaryItem(
+                                  label: 'Activity',
+                                  value:
+                                      '${activityHours.toStringAsFixed(1)} h',
+                                  icon: Icons.directions_run,
+                                ),
                               ),
                             ],
                           ),
@@ -280,11 +290,15 @@ class _SummaryItem extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 14.0,
           ),
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 2.0),
         Text(
           label,
           style: const TextStyle(color: kSecondaryTextColor, fontSize: 12.0),
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
         ),
       ],
     );

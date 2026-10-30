@@ -22,7 +22,7 @@ class CounterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
+        margin: const EdgeInsets.all(6.0),
         padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 8.0),
         decoration: BoxDecoration(
           color: kActiveCardColor,
@@ -51,14 +51,14 @@ class CounterCard extends StatelessWidget {
                   key: Key('decrement_${title.toLowerCase()}'),
                   icon: Icons.remove,
                   onPressed: onDecrement,
-                  tooltip: 'Decrease',
+                  tooltip: 'Decrease $title',
                 ),
                 const SizedBox(width: 14.0),
                 _RoundIconButton(
                   key: Key('increment_${title.toLowerCase()}'),
                   icon: Icons.add,
                   onPressed: onIncrement,
-                  tooltip: 'Increase',
+                  tooltip: 'Increase $title',
                 ),
               ],
             ),
@@ -83,14 +83,24 @@ class _RoundIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onPressed,
-      elevation: 3.0,
-      constraints: const BoxConstraints.tightFor(width: 44.0, height: 44.0),
-      shape: const CircleBorder(),
-      fillColor: const Color(0xFF25294A),
-      splashColor: kPrimaryWaterColor.withValues(alpha: 0.3),
-      child: Icon(icon, color: kPrimaryTextColor, size: 22.0),
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: const Color(0xFF25294A),
+        shape: const CircleBorder(),
+        elevation: 3.0,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: const CircleBorder(),
+          splashColor: kPrimaryWaterColor.withValues(alpha: 0.3),
+          child: SizedBox(
+            width: 48.0,
+            height: 48.0,
+            child: Icon(icon, color: kPrimaryTextColor, size: 22.0),
+          ),
+        ),
+      ),
     );
   }
 }

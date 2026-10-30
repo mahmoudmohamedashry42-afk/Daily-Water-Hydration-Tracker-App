@@ -29,7 +29,7 @@ class BottomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,14 @@ class BottomButton extends StatelessWidget {
               Icon(icon, size: 24.0, color: const Color(0xFF0A0E21)),
               const SizedBox(width: 8.0),
             ],
-            Text(title, style: kLargeButtonTextStyle),
+            Flexible(
+              child: Text(
+                title,
+                style: kLargeButtonTextStyle,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ),
           ],
         ),
       ),

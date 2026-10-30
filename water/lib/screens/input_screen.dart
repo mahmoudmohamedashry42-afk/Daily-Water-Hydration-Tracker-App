@@ -66,6 +66,7 @@ class _InputScreenState extends State<InputScreen> {
       weight = 60;
       age = 20;
     });
+    if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Reset all inputs to default values'),
@@ -212,7 +213,6 @@ class _InputScreenState extends State<InputScreen> {
                                 value: activityHours,
                                 min: minActivity,
                                 max: maxActivity,
-
                                 activeColor: kPrimaryWaterColor,
                                 inactiveColor: const Color(0xFF25294A),
                                 onChanged: (double newValue) {
